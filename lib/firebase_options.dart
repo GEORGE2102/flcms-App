@@ -51,16 +51,16 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAJgqDFg7gvzOzwP7EgmBJ5Vcqt1BNm-J8',
-    appId: '1:858670174942:android:a9b09bcacf2f647df5284f',
+    apiKey: '',
+    appId: '1:',
     messagingSenderId: '858670174942',
     projectId: 'first-love-church-app',
     storageBucket: 'first-love-church-app.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCt-UYnWX6UxsOP-utGVOQ-Ay73awyebLc',
-    appId: '1:858670174942:ios:5e7406601e46eca9f5284f',
+    apiKey: '',
+    appId: '1:',
     messagingSenderId: '858670174942',
     projectId: 'first-love-church-app',
     storageBucket: 'first-love-church-app.firebasestorage.app',
@@ -77,7 +77,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDvxu2p8HOy6HMB92DmT2aYIirwu6WED_U',
+    apiKey: '',
     appId: '1:858670174942:web:653da14f55e39d15f5284f',
     messagingSenderId: '858670174942',
     projectId: 'first-love-church-app',
