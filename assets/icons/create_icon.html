@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FLCMS Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        canvas {
+            border: 2px solid #ccc;
+            background: white;
+            margin: 20px;
+        }
+        button {
+            background: #3F51B5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #303F9F;
+        }
+        .instructions {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>FLCMS App Icon Generator</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Generate Icon" to create a simple church management icon</li>
+            <li>Right-click the generated icon and select "Save image as..."</li>
+            <li>Save it as "app_icon.png" in the assets/icons/ folder</li>
+            <li>Run the Flutter command to generate app icons</li>
+        </ol>
+    </div>
+
+    <canvas id="iconCanvas" width="1024" height="1024"></canvas>
+    <br>
+    <button onclick="generateIcon()">Generate Icon</button>
+    <button onclick="downloadIcon()">Download as PNG</button>
+
+    <script>
+        function generateIcon() {
+            const canvas = document.getElementById('iconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, 1024, 1024);
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 1024, 1024);
+            gradient.addColorStop(0, '#3F51B5'); // Deep blue
+            gradient.addColorStop(1, '#5C6BC0'); // Light blue
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1024, 1024);
+            
+            // Create border
+            ctx.strokeStyle = '#1A237E';
+            ctx.lineWidth = 8;
+            ctx.strokeRect(4, 4, 1016, 1016);
+            
+            // Draw white cross
+            ctx.fillStyle = '#FFFFFF';
+            
+            // Vertical bar of cross
+            const crossWidth = 120;
+            const crossHeight = 600;
+            const centerX = 512;
+            const centerY = 512;
+            
+            ctx.fillRect(centerX - crossWidth/2, centerY - crossHeight/2, crossWidth, crossHeight);
+            
+            // Horizontal bar of cross
+            const horizontalWidth = 400;
+            const horizontalHeight = 120;
+            
+            ctx.fillRect(centerX - horizontalWidth/2, centerY - horizontalHeight/2, horizontalWidth, horizontalHeight);
+            
+            // Add subtle shadow to cross
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 5;
+            ctx.shadowOffsetY = 5;
+            
+            // Draw organization symbol (small circle with document icon)
+            ctx.shadowColor = 'transparent';
+            ctx.fillStyle = '#FFD700'; // Gold accent
+            ctx.beginPath();
+            ctx.arc(centerX + 200, centerY - 200, 80, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Add document lines in the circle
+            ctx.strokeStyle = '#3F51B5';
+            ctx.lineWidth = 8;
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.moveTo(centerX + 160, centerY - 220 + i * 20);
+                ctx.lineTo(centerX + 240, centerY - 220 + i * 20);
+                ctx.stroke();
+            }
+            
+            console.log('Icon generated successfully!');
+        }
+        
+        function downloadIcon() {
+            const canvas = document.getElementById('iconCanvas');
+            const link = document.createElement('a');
+            link.download = 'app_icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate icon on page load
+        window.onload = function() {
+            generateIcon();
+        };
+    </script>
+</body>
+</html> 

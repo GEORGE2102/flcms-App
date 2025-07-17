@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLCMS Church Management App Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .icon-preview {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .icon-size {
+            text-align: center;
+            margin: 10px;
+        }
+        .icon-size span {
+            display: block;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        button {
+            background: #3F51B5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #303F9F;
+        }
+        .download-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ FLCMS Church Management App Icon</h1>
+        <p>Professional church management system icon with cross and organizational elements.</p>
+
+        <div class="icon-preview">
+            <div class="icon-size">
+                <canvas id="icon-512" width="512" height="512"></canvas>
+                <span>512x512</span>
+            </div>
+            <div class="icon-size">
+                <canvas id="icon-256" width="256" height="256"></canvas>
+                <span>256x256</span>
+            </div>
+            <div class="icon-size">
+                <canvas id="icon-128" width="128" height="128"></canvas>
+                <span>128x128</span>
+            </div>
+            <div class="icon-size">
+                <canvas id="icon-64" width="64" height="64"></canvas>
+                <span>64x64</span>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h3>📥 Download Icons</h3>
+            <p>Click the buttons below to download the icon in different sizes:</p>
+            <button onclick="downloadIcon('icon-512', 'flcms_icon_512.png')">Download 512x512</button>
+            <button onclick="downloadIcon('icon-256', 'flcms_icon_256.png')">Download 256x256</button>
+            <button onclick="downloadIcon('icon-128', 'flcms_icon_128.png')">Download 128x128</button>
+            <button onclick="downloadIcon('icon-64', 'flcms_icon_64.png')">Download 64x64</button>
+            <button onclick="downloadIcon('icon-512', 'app_icon.png')">📱 Download Main App Icon</button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; background: #e3f2fd; border-radius: 6px;">
+            <h4>🎯 Design Features:</h4>
+            <ul>
+                <li><strong>Cross Symbol:</strong> Central white cross representing faith and church</li>
+                <li><strong>Shield Background:</strong> Rounded shield shape for protection and organization</li>
+                <li><strong>Professional Colors:</strong> Deep blue gradient for trust and reliability</li>
+                <li><strong>Management Elements:</strong> Subtle document/organization symbols</li>
+                <li><strong>Modern Design:</strong> Clean, scalable vector-style graphics</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function drawChurchIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Scale factor for responsive design
+            const scale = size / 512;
+            
+            // Background gradient (shield shape)
+            const gradient = ctx.createLinearGradient(0, 0, 0, size);
+            gradient.addColorStop(0, '#3F51B5');
+            gradient.addColorStop(0.5, '#5C6BC0');
+            gradient.addColorStop(1, '#3F51B5');
+            
+            // Draw rounded shield background
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = size * 0.42;
+            
+            // Shield/rounded rectangle shape
+            ctx.roundRect(centerX - radius, centerY - radius, radius * 2, radius * 2, radius * 0.15);
+            ctx.fill();
+            
+            // Add subtle shadow/depth
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+            ctx.shadowBlur = 10 * scale;
+            ctx.shadowOffsetY = 3 * scale;
+            
+            // Draw white cross in center
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowColor = 'transparent';
+            
+            const crossSize = radius * 0.6;
+            const crossThickness = crossSize * 0.2;
+            
+            // Vertical bar of cross
+            ctx.fillRect(
+                centerX - crossThickness / 2,
+                centerY - crossSize / 2,
+                crossThickness,
+                crossSize
+            );
+            
+            // Horizontal bar of cross
+            ctx.fillRect(
+                centerX - crossSize / 2,
+                centerY - crossThickness / 2,
+                crossSize,
+                crossThickness
+            );
+            
+            // Add small management/organization icons around the cross
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            
+            // Small document icons (representing management)
+            const docSize = 8 * scale;
+            const offset = radius * 0.7;
+            
+            // Top-right: Document icon
+            drawDocumentIcon(ctx, centerX + offset * 0.5, centerY - offset * 0.5, docSize);
+            
+            // Bottom-left: People icon
+            drawPeopleIcon(ctx, centerX - offset * 0.5, centerY + offset * 0.5, docSize);
+            
+            // Border accent
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 2 * scale;
+            ctx.beginPath();
+            ctx.roundRect(centerX - radius, centerY - radius, radius * 2, radius * 2, radius * 0.15);
+            ctx.stroke();
+        }
+        
+        function drawDocumentIcon(ctx, x, y, size) {
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            
+            // Simple document representation
+            ctx.fillRect(x - size/2, y - size/2, size, size * 1.2);
+            
+            // Document lines
+            ctx.fillStyle = 'rgba(63, 81, 181, 0.6)';
+            const lineHeight = size * 0.15;
+            for (let i = 0; i < 3; i++) {
+                ctx.fillRect(x - size/3, y - size/4 + i * lineHeight, size * 0.6, lineHeight * 0.5);
+            }
+            
+            ctx.restore();
+        }
+        
+        function drawPeopleIcon(ctx, x, y, size) {
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            
+            // Simple people representation (three circles)
+            const circleRadius = size * 0.15;
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.arc(x - size/3 + i * size/3, y, circleRadius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            ctx.restore();
+        }
+        
+        // Polyfill for roundRect if not available
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+        
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Initialize all icons when page loads
+        window.onload = function() {
+            ['icon-512', 'icon-256', 'icon-128', 'icon-64'].forEach(id => {
+                const canvas = document.getElementById(id);
+                drawChurchIcon(canvas);
+            });
+        };
+    </script>
+</body>
+</html> 

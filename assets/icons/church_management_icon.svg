@@ -1,0 +1,65 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4A90E2"/>
+      <stop offset="70%" stop-color="#357ABD"/>
+      <stop offset="100%" stop-color="#2E5AA5"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="512" cy="512" r="460" fill="url(#bgGradient)" filter="url(#shadow)"/>
+  
+  <!-- Inner Circle for Depth -->
+  <circle cx="512" cy="512" r="410" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- Main Cross -->
+  <g filter="url(#shadow)">
+    <!-- Vertical Bar -->
+    <rect x="482" y="333" width="60" height="358" fill="white" rx="5"/>
+    <!-- Horizontal Bar -->
+    <rect x="333" y="482" width="358" height="60" fill="white" rx="5"/>
+  </g>
+  
+  <!-- Management Icons Around Cross -->
+  
+  <!-- Document Icon (Top-Right) -->
+  <g transform="translate(640, 380)" opacity="0.8">
+    <rect x="-20" y="-25" width="40" height="50" fill="white" rx="3"/>
+    <!-- Document Lines -->
+    <rect x="-12" y="-15" width="24" height="4" fill="#4A90E2"/>
+    <rect x="-12" y="-8" width="24" height="4" fill="#4A90E2"/>
+    <rect x="-12" y="-1" width="18" height="4" fill="#4A90E2"/>
+  </g>
+  
+  <!-- People Icon (Bottom-Left) -->
+  <g transform="translate(384, 644)" opacity="0.8">
+    <circle cx="-15" cy="0" r="8" fill="white"/>
+    <circle cx="0" cy="0" r="8" fill="white"/>
+    <circle cx="15" cy="0" r="8" fill="white"/>
+  </g>
+  
+  <!-- Calendar Icon (Top-Left) -->
+  <g transform="translate(384, 380)" opacity="0.8">
+    <rect x="-20" y="-20" width="40" height="40" fill="white" rx="3"/>
+    <!-- Calendar Grid -->
+    <rect x="-12" y="-8" width="8" height="8" fill="#4A90E2"/>
+    <rect x="-2" y="-8" width="8" height="8" fill="#4A90E2"/>
+    <rect x="-12" y="2" width="8" height="8" fill="#4A90E2"/>
+    <rect x="-2" y="2" width="8" height="8" fill="#4A90E2"/>
+  </g>
+  
+  <!-- Chart Icon (Bottom-Right) -->
+  <g transform="translate(640, 644)" opacity="0.8">
+    <rect x="-20" y="-10" width="8" height="20" fill="white"/>
+    <rect x="-8" y="-20" width="8" height="30" fill="white"/>
+    <rect x="4" y="-5" width="8" height="15" fill="white"/>
+  </g>
+  
+  <!-- Subtle Border -->
+  <circle cx="512" cy="512" r="460" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="4"/>
+</svg> 
